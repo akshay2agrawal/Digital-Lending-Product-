@@ -1,0 +1,91 @@
+/* App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin: 2rem auto;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.loan-offer {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.loan-offer p {
+  margin: 5px 0;
+}
+
+.message {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Loan Offer Component CSS */
+.loan-offer {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  margin-top: 20px;
+}
+
+.loan-offer h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.loan-offer p {
+  margin: 5px 0;
+}
+
+.loan-offer p:last-child {
+  font-weight: bold;
+  color: #0056b3;
+}

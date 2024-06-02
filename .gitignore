@@ -1,0 +1,77 @@
+# Ignore Python bytecode and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Django migrations
+**/migrations/
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Ignore environment variables and settings
+.env
+*.env
+
+# Ignore database files
+*.sqlite3
+db.sqlite3
+
+# Ignore Django static files and media uploads
+static/
+media/
+
+# Ignore log files
+*.log
+
+# Ignore virtual environment directories
+venv/
+env/
+.virtualenv/
+
+# Ignore IDE and editor config files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Ignore node_modules (React dependencies)
+node_modules/
+npm cache clean
+
+# Ignore build output (for Create React App)
+build/
+dist/
+
+# Ignore .DS_Store (macOS file system files)
+.DS_Store
+
+# Ignore coverage reports
+coverage/
+*.cover
+*.py,cover
+
+# Ignore compiled code and transpiled files
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Ignore test and coverage results
+*.coverage
+coverage.*
+.cache
+nosetests.xml
+*.log
+*.bak
+*.swp
+*~
+
+# Ignore any custom directories or files
+custom_directory/
+custom_file.ext
+
+# Optional: Ignore sensitive or temporary files you may have
+secrets.json
+.temp/
+.tmp/
