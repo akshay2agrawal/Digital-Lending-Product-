@@ -1,6 +1,6 @@
 # Digital Lending Product
 
-This micro-version of Bees and Bears' digital platform which maintains a list of customers and their respective loan offers. The system allows the creation of loan offers based on user input.
+This micro-version digital platform which maintains a list of customers and their respective loan offers. The system allows the creation of loan offers based on user input.
 
 This Digital Lending Product is built with Django (for the backend) and React (for the frontend).
 
