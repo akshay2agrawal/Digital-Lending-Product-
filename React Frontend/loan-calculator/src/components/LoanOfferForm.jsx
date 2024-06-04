@@ -18,19 +18,44 @@ const LoanOfferForm = ({ onSubmit }) => {
     setFormData({ ...formData, customer: event.target.value });
   };
 
+  // useEffect(() => {
+  //   const fetchAvailableCustomers = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:8000/customers/");
+  //       setAvailableCustomers(response.data);
+  //     } catch (error) {
+  //       if (error.response && error.response.data) {
+  //         console.error(
+  //           "Error fetching available customer data:",
+  //           error.response.data
+  //         );
+  //       } else {
+  //         console.error("Error fetching available customer data:", error);
+  //       }
+  //     }
+  //   };
+  //   fetchAvailableCustomers();
+  // }, []);
+
   useEffect(() => {
     const fetchAvailableCustomers = async () => {
       try {
         const response = await axios.get("http://localhost:8000/customers/");
         setAvailableCustomers(response.data);
       } catch (error) {
-        if (error.response && error.response.data) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
           console.error(
             "Error fetching available customer data:",
             error.response.data
           );
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("No response received from server:", error.request);
         } else {
-          console.error("Error fetching available customer data:", error);
+          // Something happened in setting up the request that triggered an Error
+          console.error("Error setting up the request:", error.message);
         }
       }
     };
@@ -127,13 +152,20 @@ const LoanOfferForm = ({ onSubmit }) => {
         {errors.term && <div style={{ color: "red" }}>{errors.term}</div>}
         <div>
           <label htmlFor="customer">Customer</label>
-          <select value={customerId} onChange={handleCustomerIdChange}>
+          <select
+            id="customer"
+            value={customerId}
+            onChange={handleCustomerIdChange}
+            htmlFor="customer"
+          >
             <option value="">Select a customer ID</option>
-            {availableCustomers.map((customer) => (
-              <option key={customer.id} value={customer.id}>
-                {customer.id}
-              </option>
-            ))}
+            {availableCustomers &&
+              availableCustomers.map &&
+              availableCustomers.map((customer) => (
+                <option key={customer.id} value={customer.id}>
+                  {customer.id}
+                </option>
+              ))}
           </select>
         </div>
         {errors.customer && (

@@ -34,18 +34,20 @@ class LoanOfferSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        print('>inside create method<')
-        amount = validated_data.get('amount')
-        interest_rate = validated_data.get('interest_rate')
-        term = validated_data.get('term')
+        # print('>inside create method<')
+        amount = validated_data.get('amount')  # Principal loan amount
+        interest_rate = validated_data.get('interest_rate') # Annual interest rate (percentage)
+        term = validated_data.get('term') # Loan term (in months)
         customer = validated_data.get('customer')
 
-        # Calculate monthly payment
-        monthly_payment = amount * (interest_rate / 1200) / (1 - (1 + interest_rate / 1200) ** (-term))
+        # Calculating monthly interest rate
+        monthly_interest_rate = (interest_rate/100) / 12
+        # Calculaiting monthly payment
+        monthly_payment = (amount * monthly_interest_rate) / (1 - (1 + monthly_interest_rate) ** (-term))
         validated_data['monthly_payment'] = round(monthly_payment, 2)
 
         try:
-            print('Creating loan offer...')
+            # print('Creating loan offer...')
             return super().create(validated_data)
         except :
             raise serializers.ValidationError(f"An error occurred while creating the loan offer: {str(e)}")

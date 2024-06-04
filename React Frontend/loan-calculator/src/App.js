@@ -22,11 +22,9 @@ const App = () => {
         "Error creating loan offer:",
         Object.values(error.response.data)[0]
       );
-      // console.log(
-      //   "Error creating loan offer:",
-      //   error.response.data["non_field_errors"][0]
-      // );
+      // setMessage("Error creating loan offer");
       setMessage(Object.values(error.response.data)[0]);
+
       console.log("Error creating loan offer:", error.response.data);
     }
   };

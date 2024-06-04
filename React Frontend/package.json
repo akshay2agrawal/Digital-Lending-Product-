@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "babel-jest": "^29.7.0",
-    "axios": "^1.7.2"
-  },
-  "devDependencies": {
-    "jest-environment-node": "^29.7.0"
-  }
-}

@@ -1,29 +1,27 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import LoanOffer from "./LoanOffer";
+import { act } from "react";
 
-describe("LoanOffer", () => {
-  test("renders loan offer details correctly", () => {
-    const loanOfferProps = {
-      amount: 10000,
+describe("LoanOffer Component", () => {
+  it("renders loan offer details", () => {
+    const loanOffer = {
+      amount: 1000,
       interestRate: 5,
-      term: 24,
-      monthlyPayment: 450.57,
+      term: 12,
+      monthlyPayment: 85.61,
       customer: 1,
     };
 
-    render(<LoanOffer {...loanOfferProps} />);
+    let getByText;
+    act(() => {
+      ({ getByText } = render(<LoanOffer {...loanOffer} />));
+    });
 
-    const amountDisplay = screen.getByText(/10000 euros/i);
-    const interestRateDisplay = screen.getByText(/5%/i);
-    const termDisplay = screen.getByText(/24 months/i);
-    const monthlyPaymentDisplay = screen.getByText(/450.57/i);
-    const customerDisplay = screen.getByText(/Customer ID: 1/i);
-
-    expect(amountDisplay).toBeInTheDocument();
-    expect(interestRateDisplay).toBeInTheDocument();
-    expect(termDisplay).toBeInTheDocument();
-    expect(monthlyPaymentDisplay).toBeInTheDocument();
-    expect(customerDisplay).toBeInTheDocument();
+    expect(getByText("Customer ID: 1")).toBeInTheDocument();
+    expect(getByText("Amount: 1000 euros")).toBeInTheDocument();
+    expect(getByText("Interest Rate: 5%")).toBeInTheDocument();
+    expect(getByText("Term: 12 months")).toBeInTheDocument();
+    expect(getByText("Monthly Payment: 85.61")).toBeInTheDocument();
   });
 });
